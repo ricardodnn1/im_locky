@@ -14,14 +14,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Gerador de números dinamico!'), 
+        title: const Text('Gerador de números dinamico!'),
         centerTitle: true,
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.white,
-        padding: const EdgeInsets.all(18),
+      body: Padding(
+        padding: const EdgeInsets.all(18.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -31,59 +28,70 @@ class HomePage extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 width: size.width * .70,
-                child: Text('Sugestão de jogo com 15 numeros na LOTOFACIL', textAlign: TextAlign.center, style: GoogleFonts.poppins(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600)),
+                child: Text(
+                  'Sugestão de jogo com 15 numeros na LOTOFACIL',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
-              const SizedBox(height: 10), 
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [ 
+                children: [
                   DropdownButton(
-                    value: controller.selectDrawnNumbers,
-                    items: controller.listDrawnNumbers.map((number) {
-                      return DropdownMenuItem(
-                        value: number,
-                        child: Text('$number')
-                      );
-                    }).toList(), 
-                    onChanged: (value) {
-                      controller.setDrawnNumbers(value!);
-                    }
-                  ),
+                      value: controller.selectDrawnNumbers,
+                      items: controller.listDrawnNumbers.map((number) {
+                        return DropdownMenuItem(
+                          value: number,
+                          child: Text('$number'),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        controller.setDrawnNumbers(value!);
+                      }),
                   const SizedBox(width: 15),
                   const Text('de'),
                   const SizedBox(width: 15),
                   DropdownButton(
-                    value: controller.selectListNumbers,
-                    items: controller.listNumbers.map((number) {
-                      return DropdownMenuItem(
-                        value: number,
-                        child: Text('$number')
-                      );
-                    }).toList(), 
-                    onChanged: (value) {
-                      controller.setListNumbers(value!);
-                    }
-                  ),
-                  
+                      value: controller.selectListNumbers,
+                      items: controller.listNumbers.map((number) {
+                        return DropdownMenuItem(
+                          value: number,
+                          child: Text('$number'),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        controller.setListNumbers(value!);
+                      }),
                 ],
               ),
-              const SizedBox(height: 10), 
+              const SizedBox(height: 10),
               Wrap(
                 direction: Axis.horizontal,
                 alignment: WrapAlignment.center,
                 runAlignment: WrapAlignment.center,
                 children: [
-                  ...controller.drawnNumbers.map((e) => 
-                  Container(
-                    width: 48,
-                    height: 48,
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade200,
-                      borderRadius: BorderRadius.circular(50)
-                    ),
-                    child: Center(child: Text(e.toString(), style: GoogleFonts.poppins(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold))),
-                  )), 
+                  ...controller.drawnNumbers.map((e) => Container(
+                        width: 48,
+                        height: 48,
+                        margin: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.blue.shade200,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Center(
+                          child: Text(
+                            e.toString(),
+                            style: GoogleFonts.poppins(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      )),
                 ],
               ),
               Container(
@@ -92,13 +100,14 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)
-                    )
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                  onPressed: () async { 
+                  onPressed: () async {
                     await controller.raffle();
-                  }, 
-                  child: const Text('Gerar números')),
+                  },
+                  child: const Text('Gerar números'),
+                ),
               )
             ],
           ),
