@@ -31,12 +31,12 @@ class HomePage extends StatelessWidget {
                 width: size.width * .70,
                 child: Center(
                   child: Text(
-                    'Sugestão de jogo com 15 numeros na LOTOFACIL',
+                    'Sugestão de jogo para loterias',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       color: Colors.black,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
