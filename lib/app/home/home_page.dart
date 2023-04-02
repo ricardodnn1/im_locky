@@ -17,27 +17,33 @@ class HomePage extends StatelessWidget {
         title: const Text('Gerador de números dinamico!'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 10),
-              Container(
-                alignment: Alignment.center,
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
                 width: size.width * .70,
-                child: Text(
-                  'Sugestão de jogo com 15 numeros na LOTOFACIL',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
+                child: Center(
+                  child: Text(
+                    'Sugestão de jogo com 15 numeros na LOTOFACIL',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
                       fontSize: 18,
                       color: Colors.black,
-                      fontWeight: FontWeight.w600),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -52,51 +58,65 @@ class HomePage extends StatelessWidget {
                       onChanged: (value) {
                         controller.setDrawnNumbers(value!);
                       }),
-                  const SizedBox(width: 15),
+                  const SizedBox(
+                    width: 15,
+                  ),
                   const Text('de'),
-                  const SizedBox(width: 15),
+                  const SizedBox(
+                    width: 15,
+                  ),
                   DropdownButton(
-                      value: controller.selectListNumbers,
-                      items: controller.listNumbers.map((number) {
+                    value: controller.selectListNumbers,
+                    items: controller.listNumbers.map(
+                      (number) {
                         return DropdownMenuItem(
                           value: number,
                           child: Text('$number'),
                         );
-                      }).toList(),
-                      onChanged: (value) {
-                        controller.setListNumbers(value!);
-                      }),
+                      },
+                    ).toList(),
+                    onChanged: (value) {
+                      controller.setListNumbers(value!);
+                    },
+                  ),
                 ],
               ),
-              const SizedBox(height: 10),
+              const SizedBox(
+                height: 10,
+              ),
               Wrap(
                 direction: Axis.horizontal,
                 alignment: WrapAlignment.center,
                 runAlignment: WrapAlignment.center,
                 children: [
-                  ...controller.drawnNumbers.map((e) => Container(
-                        width: 48,
-                        height: 48,
-                        margin: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.blue.shade200,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Center(
-                          child: Text(
-                            e.toString(),
-                            style: GoogleFonts.poppins(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                  ...controller.drawnNumbers.map(
+                    (e) => Container(
+                      width: 48,
+                      height: 48,
+                      margin: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade200,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Center(
+                        child: Text(
+                          e.toString(),
+                          style: GoogleFonts.poppins(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-              Container(
+              const SizedBox(
+                height: 24,
+              ),
+              SizedBox(
                 width: size.width * .70,
-                margin: const EdgeInsets.only(top: 30),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
